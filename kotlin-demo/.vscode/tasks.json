@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Kotlin file",
+      "type": "shell",
+      "command": "kotlinc ${file} -include-runtime -d ${fileBasenameNoExtension}.jar",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Kotlin file",
+      "dependsOn": [
+        "Build Kotlin file"
+      ],
+      "type": "shell",
+      "command": "chcp 65001 > $null; java '-Dfile.encoding=UTF-8' -jar ${fileBasenameNoExtension}.jar",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
